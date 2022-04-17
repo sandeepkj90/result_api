@@ -26,6 +26,8 @@ const UserService = {
     login: (payload) => {
         return new Promise((resolve, reject) => {
             UserDAO.login(payload).then(result => {
+                if(!result)
+                return reject({ status: CONSTANT.HTTP_STATUS_CODE.INVALID_CREDENTIAL, message: CONSTANT.MESSAGE.USER.INVALID_CREDENTIAL });
                 resolve({ status: CONSTANT.HTTP_STATUS_CODE.SUCCESS, message: CONSTANT.MESSAGE.USER.LOGIN, data: result })
             }).catch(error => {
                 reject({ status: CONSTANT.HTTP_STATUS_CODE.SERVER_ERROR, message: error })

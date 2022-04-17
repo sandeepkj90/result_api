@@ -16,7 +16,7 @@ require('./database');
 UserService.isUserExist({ userName: 'admin' }).then(result => {
     console.log('result', result);
     if (!result.data) {
-        UserService.registerUser({ name: 'admin', userName: 'admin', password: 'admin@123', email: 'sandeepkj90@gmail.com' }).then(reslt => {
+        UserService.registerUser({ name: 'admin', userName: 'admin', password: 'admin123', email: 'sandeepkj90@gmail.com' }).then(reslt => {
             console.log('Admin Created Successfully');
         }).catch(error => {
             console.log(CONSTANT.MESSAGE.COMMON.COMMON_ERROR);
