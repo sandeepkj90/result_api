@@ -1,6 +1,22 @@
 const express = require('express');
 const app = express();
 
+// Logging the HTTP request response on console 
+var morgan = require('morgan');
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
+
+//Add Headers to secure the API 
+const helmet = require("helmet");
+app.use(helmet());
+
+
+// Origin CORS
+// const allowlist = ['*']
+const cors = require('cors')
+app.use(cors());
+
+
+
 const CONSTANT = require('./src/utils/constant');
 const UserService = require('./src/service/user-service');
 
